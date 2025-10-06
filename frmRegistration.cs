@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 namespace WONG_BANKING
 {
@@ -16,8 +17,9 @@ namespace WONG_BANKING
 
     public partial class frmRegistration : Form
     {
-        string gender, customer_id;
+        string gender, customer_id, accNum;
         int age;
+        int currentYear = DateTime.Now.Year, count = 1;
       
         public frmRegistration()
         {
@@ -25,16 +27,6 @@ namespace WONG_BANKING
             
         }
         
-
-        public void customerID_Generator()
-        {
-            Random rand = new Random();
-            this.customer_id = "CUST" + rand.Next(10).ToString()+ rand.Next(300).ToString();
-            txtCustomerID.Text = this.customer_id;
-        }
-
-        
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -42,7 +34,9 @@ namespace WONG_BANKING
 
         private void frmRegistration_Load(object sender, EventArgs e)
         {
+            
             customerID_Generator();
+            
             cboCivilStatus.SelectedIndex = 5;
         }
 
@@ -54,12 +48,15 @@ namespace WONG_BANKING
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            Customer _customer = new Customer();
-            List<Customer> instance = Customer.getInstance();
-            age = calculateAge(Convert.ToInt32(dtpBdate.Text.Split(',')[1]));
-            Console.WriteLine(age);
+           
+            //List<Customer> instance = Customer.getInstance();
+            
+            age = calculateAge(birthYear(dtpBdate.Text));
+
+            
             if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text))
             {
+                
                 if (rbtMale.Checked == true)
                 {
                     gender = rbtMale.Text;
@@ -68,20 +65,30 @@ namespace WONG_BANKING
                 {
                     gender = rbtFemale.Text;
                 }
+                accNumber_Gen();
+                Customer cust = new Customer()
+                {
+                    CustomerID = txtCustomerID.Text,
+                    Name = txtName.Text,
+                    Gender = gender,
+                    Age = age,
+                    Birthdate = dtpBdate.Text,
+                    Address = txtAddress.Text,
+                    CivilStatus = cboCivilStatus.Text,
+                    ContactNumber = txtCNumber.Text,
+                    Email = txtEmail.Text,
+                    ImagePath = pbProfile.ImageLocation,
+                    AccNum = this.accNum
+                };
 
-                _customer.setName(txtName.Text);
-                _customer.setGender(gender);
-                _customer.setAge(this.age);
-                _customer.setBirthdate(dtpBdate.Text);
-                _customer.setAddress(txtAddress.Text);
-                _customer.setCStatus(cboCivilStatus.SelectedIndex == 5 ? "" : cboCivilStatus.Text);
-                _customer.setCNumber(txtCNumber.Text);
-                _customer.setEmail(txtEmail.Text);
-                _customer.setId(txtCustomerID.Text);
+                //instance.Add(cust);
 
-                instance.Add(_customer);
+                cust.saveQuery();
+
+                MessageBox.Show($"Registration Successful!\nYour username will be your email, and your password will be your account number({accNum})");
                 clearItems();
                 customerID_Generator();
+                
             } else
             {
                 MessageBox.Show("Invalid Input/s.");
@@ -118,7 +125,23 @@ namespace WONG_BANKING
                 //show image
                 pbProfile.Image = new Bitmap(ofd.FileName);
                 pbProfile.SizeMode = PictureBoxSizeMode.StretchImage;
-              
+                //get filename only
+                string fileName = System.IO.Path.GetFileName(ofd.FileName);
+                //go up 2 folders path
+                string projPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.StartupPath, @"..\..\"));
+                string imgFolder = System.IO.Path.Combine(projPath, "images");
+
+                if (!System.IO.Directory.Exists(imgFolder))
+                {
+                    System.IO.Directory.CreateDirectory(imgFolder);
+                }
+
+                string imgPath = System.IO.Path.Combine(imgFolder, fileName);
+                System.IO.File.Copy(ofd.FileName, imgPath, true);
+
+                // set image loc to copied file
+                pbProfile.ImageLocation = imgPath;
+
 
 
             }
@@ -130,16 +153,34 @@ namespace WONG_BANKING
             rbtFemale.Checked = rbtMale.Checked = false;
             dtpBdate.Text = DateTime.Now.ToString();
             cboCivilStatus.SelectedIndex = 5;
+            pbProfile.Image = null;
         }
 
         public int  calculateAge(int birthyear)
         {
-            return  DateTime.Now.Year - birthyear;
+            return  currentYear - birthyear;
         }
+
+        public int birthYear(string date)
+        {
+            return Convert.ToInt32(date.Split(',')[1]);
+        }
+
+        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public bool validation(string email, string address, string cNumber, int age, string name)
         {
             errorProvider1.Clear();
-            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true;
+            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true;
 
             string email_pattern = @"^[^@\s]+@[a-zA-Z]+\.[a-zA-Z]+$";
             string address_pattern = @"^[A-Za-z0-9.,\-\s]+$";
@@ -168,8 +209,15 @@ namespace WONG_BANKING
             if (!Regex.IsMatch(cNumber, cNumber_pattern))
             {
                 errorProvider1.SetError(txtCNumber, "Invalid contact number. 11 digits only ");
+                validCNumber = false;
             }
-                if (!validEmail || !validAddress || !validCNumber || !validAge || !validName)
+            if(pbProfile.Image == null)
+            {
+                errorProvider1.SetError(btnUpload, "Provide image");
+                validImage = false;
+            }
+
+            if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage)
             {
                 return false;
             }
@@ -178,5 +226,29 @@ namespace WONG_BANKING
 
             
         }
+        public void customerID_Generator()
+        {
+            Random rand = new Random();
+            this.customer_id = "CUST" + rand.Next(10).ToString() + rand.Next(300).ToString();
+            txtCustomerID.Text = this.customer_id;
+        }
+
+        public void accNumber_Gen()
+        {
+            using (SqlConnection conn = DBHelper.GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Customers", conn);
+
+                if (cmd.ExecuteScalar() != null && cmd.ExecuteScalar() != DBNull.Value)
+                {
+
+                }
+                count = (int)cmd.ExecuteScalar() + 1;
+            }
+            this.accNum = birthYear(dtpBdate.Text).ToString() + "-" + currentYear.ToString() + "-" + count.ToString();
+
+        }
+
     }
 }
