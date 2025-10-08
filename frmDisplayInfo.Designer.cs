@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,13 +57,34 @@
             this.lbl9 = new System.Windows.Forms.Label();
             this.lblCId = new System.Windows.Forms.Label();
             this.listBoxCustomers = new System.Windows.Forms.ListBox();
+            this.bankDBDataSet = new WONG_BANKING.BankDBDataSet();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customersTableAdapter = new WONG_BANKING.BankDBDataSetTableAdapters.CustomersTableAdapter();
+            this.tableAdapterManager = new WONG_BANKING.BankDBDataSetTableAdapters.TableAdapterManager();
+            this.customersDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblAccNum = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.bankDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(208, 136);
+            this.lblName.Location = new System.Drawing.Point(213, 151);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 20);
@@ -73,7 +95,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(52, 136);
+            this.label1.Location = new System.Drawing.Point(57, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
@@ -84,7 +106,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(52, 177);
+            this.label2.Location = new System.Drawing.Point(57, 192);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
@@ -96,7 +118,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(311, 177);
+            this.label3.Location = new System.Drawing.Point(316, 192);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 20);
@@ -107,7 +129,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(52, 219);
+            this.label4.Location = new System.Drawing.Point(57, 234);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 20);
@@ -118,7 +140,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(52, 259);
+            this.label5.Location = new System.Drawing.Point(57, 274);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 20);
@@ -129,7 +151,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(52, 301);
+            this.label6.Location = new System.Drawing.Point(57, 316);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 20);
@@ -140,7 +162,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(52, 341);
+            this.label7.Location = new System.Drawing.Point(57, 356);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(149, 20);
@@ -151,7 +173,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(52, 385);
+            this.label8.Location = new System.Drawing.Point(57, 400);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 20);
@@ -162,7 +184,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(208, 177);
+            this.lblGender.Location = new System.Drawing.Point(213, 192);
             this.lblGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(38, 20);
@@ -173,7 +195,7 @@
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(381, 177);
+            this.lblAge.Location = new System.Drawing.Point(386, 192);
             this.lblAge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAge.Name = "lblAge";
             this.lblAge.Size = new System.Drawing.Size(38, 20);
@@ -184,7 +206,7 @@
             // 
             this.lblBdate.AutoSize = true;
             this.lblBdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBdate.Location = new System.Drawing.Point(208, 219);
+            this.lblBdate.Location = new System.Drawing.Point(213, 234);
             this.lblBdate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBdate.Name = "lblBdate";
             this.lblBdate.Size = new System.Drawing.Size(38, 20);
@@ -195,7 +217,7 @@
             // 
             this.lblCStatus.AutoSize = true;
             this.lblCStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCStatus.Location = new System.Drawing.Point(208, 259);
+            this.lblCStatus.Location = new System.Drawing.Point(213, 274);
             this.lblCStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCStatus.Name = "lblCStatus";
             this.lblCStatus.Size = new System.Drawing.Size(38, 20);
@@ -206,7 +228,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(208, 301);
+            this.lblAddress.Location = new System.Drawing.Point(213, 316);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(38, 20);
@@ -217,7 +239,7 @@
             // 
             this.lblCnumber.AutoSize = true;
             this.lblCnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCnumber.Location = new System.Drawing.Point(208, 341);
+            this.lblCnumber.Location = new System.Drawing.Point(213, 356);
             this.lblCnumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCnumber.Name = "lblCnumber";
             this.lblCnumber.Size = new System.Drawing.Size(38, 20);
@@ -228,7 +250,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(208, 385);
+            this.lblEmail.Location = new System.Drawing.Point(213, 400);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(38, 20);
@@ -302,7 +324,7 @@
             // 
             this.lbl9.AutoSize = true;
             this.lbl9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl9.Location = new System.Drawing.Point(52, 95);
+            this.lbl9.Location = new System.Drawing.Point(57, 81);
             this.lbl9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(115, 20);
@@ -313,7 +335,7 @@
             // 
             this.lblCId.AutoSize = true;
             this.lblCId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCId.Location = new System.Drawing.Point(208, 95);
+            this.lblCId.Location = new System.Drawing.Point(213, 81);
             this.lblCId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCId.Name = "lblCId";
             this.lblCId.Size = new System.Drawing.Size(38, 20);
@@ -333,12 +355,147 @@
             this.listBoxCustomers.TabStop = false;
             this.listBoxCustomers.SelectedIndexChanged += new System.EventHandler(this.listBoxCustomers_SelectedIndexChanged);
             // 
+            // bankDBDataSet
+            // 
+            this.bankDBDataSet.DataSetName = "BankDBDataSet";
+            this.bankDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataMember = "Customers";
+            this.customersBindingSource.DataSource = this.bankDBDataSet;
+            // 
+            // customersTableAdapter
+            // 
+            this.customersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CustomersTableAdapter = this.customersTableAdapter;
+            this.tableAdapterManager.TableTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = WONG_BANKING.BankDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // customersDataGridView
+            // 
+            this.customersDataGridView.AutoGenerateColumns = false;
+            this.customersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11});
+            this.customersDataGridView.DataSource = this.customersBindingSource;
+            this.customersDataGridView.Location = new System.Drawing.Point(1097, 28);
+            this.customersDataGridView.Name = "customersDataGridView";
+            this.customersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.customersDataGridView.Size = new System.Drawing.Size(370, 485);
+            this.customersDataGridView.TabIndex = 22;
+            this.customersDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersDataGridView_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CustomerID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "CustomerID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "AccountNumber";
+            this.dataGridViewTextBoxColumn2.HeaderText = "AccountNumber";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Gender";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Gender";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Age";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Age";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Birthdate";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Birthdate";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Address";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Address";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "CivilStatus";
+            this.dataGridViewTextBoxColumn8.HeaderText = "CivilStatus";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ContactNumber";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ContactNumber";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Email";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Email";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "ImagePath";
+            this.dataGridViewTextBoxColumn11.HeaderText = "ImagePath";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // lblAccNum
+            // 
+            this.lblAccNum.AutoSize = true;
+            this.lblAccNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccNum.Location = new System.Drawing.Point(213, 117);
+            this.lblAccNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAccNum.Name = "lblAccNum";
+            this.lblAccNum.Size = new System.Drawing.Size(38, 20);
+            this.lblAccNum.TabIndex = 24;
+            this.lblAccNum.Text = "N/A";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(57, 117);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(112, 20);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Account No.:";
+            // 
             // frmDisplayInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 613);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1479, 613);
+            this.Controls.Add(this.lblAccNum);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.customersDataGridView);
             this.Controls.Add(this.listBoxCustomers);
             this.Controls.Add(this.lblCId);
             this.Controls.Add(this.lbl9);
@@ -361,13 +518,14 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmDisplayInfo";
             this.Text = "frmDisplayInfo";
             this.Load += new System.EventHandler(this.frmDisplayInfo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bankDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +560,23 @@
         public System.Windows.Forms.Label lbl9;
         private System.Windows.Forms.Label lblCId;
         private System.Windows.Forms.ListBox listBoxCustomers;
+        private BankDBDataSet bankDBDataSet;
+        private System.Windows.Forms.BindingSource customersBindingSource;
+        private BankDBDataSetTableAdapters.CustomersTableAdapter customersTableAdapter;
+        private BankDBDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView customersDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.Label lblAccNum;
+        public System.Windows.Forms.Label label10;
     }
 }
