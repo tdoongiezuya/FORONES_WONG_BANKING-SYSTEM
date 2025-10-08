@@ -31,15 +31,18 @@
             this.btnRegistration = new System.Windows.Forms.Button();
             this.btnDisInfo = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnWithdraw = new System.Windows.Forms.Button();
+            this.btnCheckBalance = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRegistration
             // 
             this.btnRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistration.Location = new System.Drawing.Point(12, 12);
-            this.btnRegistration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegistration.Location = new System.Drawing.Point(293, 73);
+            this.btnRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistration.Name = "btnRegistration";
-            this.btnRegistration.Size = new System.Drawing.Size(244, 47);
+            this.btnRegistration.Size = new System.Drawing.Size(212, 38);
             this.btnRegistration.TabIndex = 0;
             this.btnRegistration.Text = "REGISTRATION";
             this.btnRegistration.UseVisualStyleBackColor = true;
@@ -48,10 +51,10 @@
             // btnDisInfo
             // 
             this.btnDisInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisInfo.Location = new System.Drawing.Point(261, 12);
-            this.btnDisInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDisInfo.Location = new System.Drawing.Point(293, 290);
+            this.btnDisInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnDisInfo.Name = "btnDisInfo";
-            this.btnDisInfo.Size = new System.Drawing.Size(283, 47);
+            this.btnDisInfo.Size = new System.Drawing.Size(212, 38);
             this.btnDisInfo.TabIndex = 1;
             this.btnDisInfo.Text = "DISPLAY INFORMATION";
             this.btnDisInfo.UseVisualStyleBackColor = true;
@@ -59,25 +62,64 @@
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.White;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(551, 14);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnLogout.Location = new System.Drawing.Point(643, 378);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 47);
+            this.btnLogout.Size = new System.Drawing.Size(139, 38);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "LOGOUT";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
+            // 
+            // btnDeposit
+            // 
+            this.btnDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeposit.Location = new System.Drawing.Point(293, 124);
+            this.btnDeposit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Size = new System.Drawing.Size(212, 38);
+            this.btnDeposit.TabIndex = 3;
+            this.btnDeposit.Text = "DEPOSIT";
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
+            // 
+            // btnWithdraw
+            // 
+            this.btnWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWithdraw.Location = new System.Drawing.Point(293, 178);
+            this.btnWithdraw.Margin = new System.Windows.Forms.Padding(2);
+            this.btnWithdraw.Name = "btnWithdraw";
+            this.btnWithdraw.Size = new System.Drawing.Size(212, 38);
+            this.btnWithdraw.TabIndex = 4;
+            this.btnWithdraw.Text = "WITHDRAW";
+            this.btnWithdraw.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckBalance
+            // 
+            this.btnCheckBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckBalance.Location = new System.Drawing.Point(293, 234);
+            this.btnCheckBalance.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCheckBalance.Name = "btnCheckBalance";
+            this.btnCheckBalance.Size = new System.Drawing.Size(212, 38);
+            this.btnCheckBalance.TabIndex = 5;
+            this.btnCheckBalance.Text = "CHECK BALANCE";
+            this.btnCheckBalance.UseVisualStyleBackColor = true;
             // 
             // frmDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 540);
+            this.ClientSize = new System.Drawing.Size(810, 439);
+            this.Controls.Add(this.btnCheckBalance);
+            this.Controls.Add(this.btnWithdraw);
+            this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnDisInfo);
             this.Controls.Add(this.btnRegistration);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDashboard";
@@ -93,5 +135,8 @@
         private System.Windows.Forms.Button btnRegistration;
         private System.Windows.Forms.Button btnDisInfo;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btnWithdraw;
+        private System.Windows.Forms.Button btnCheckBalance;
     }
 }

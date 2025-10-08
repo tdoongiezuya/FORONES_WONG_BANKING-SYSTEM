@@ -54,7 +54,7 @@ namespace WONG_BANKING
             age = calculateAge(birthYear(dtpBdate.Text));
 
             
-            if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text))
+            if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text, Convert.ToDouble(txtInitialDeposit.Text) ))
             {
                 
                 if (rbtMale.Checked == true)
@@ -85,7 +85,7 @@ namespace WONG_BANKING
 
                 cust.saveQuery();
 
-                MessageBox.Show($"Registration Successful!\nYour username will be your email, and your password will be your account number({accNum})");
+                MessageBox.Show($"Registration Successful!\n\nACCOUNT NUMBER: {accNum}\nYour username will be your email, and your password will be your account number");
                 clearItems();
                 customerID_Generator();
                 
@@ -141,9 +141,6 @@ namespace WONG_BANKING
 
                 // set image loc to copied file
                 pbProfile.ImageLocation = imgPath;
-
-
-
             }
         }
 
@@ -177,10 +174,24 @@ namespace WONG_BANKING
 
         }
 
-        public bool validation(string email, string address, string cNumber, int age, string name)
+        private void txtCNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void txtInitialDeposit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&  e.KeyChar != '.') {
+                e.Handled = true;
+            }
+        }
+
+        public bool validation(string email, string address, string cNumber, int age, string name, double initialDeposit)
         {
             errorProvider1.Clear();
-            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true;
+            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true, validDeposit = true;
 
             string email_pattern = @"^[^@\s]+@[a-zA-Z]+\.[a-zA-Z]+$";
             string address_pattern = @"^[A-Za-z0-9.,\-\s]+$";
@@ -216,8 +227,18 @@ namespace WONG_BANKING
                 errorProvider1.SetError(btnUpload, "Provide image");
                 validImage = false;
             }
+            if (pbProfile.Image == null)
+            {
+                errorProvider1.SetError(btnUpload, "Provide image");
+                validImage = false;
+            }
+            if (initialDeposit < 500)
+            {
+                errorProvider1.SetError(txtInitialDeposit, "Your initial deposit should not be less than 500.");
+                validDeposit = false;
+            }
 
-            if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage)
+            if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage || !validDeposit)
             {
                 return false;
             }
@@ -242,9 +263,9 @@ namespace WONG_BANKING
 
                 if (cmd.ExecuteScalar() != null && cmd.ExecuteScalar() != DBNull.Value)
                 {
-
+                    count = (int)cmd.ExecuteScalar() + 1;
                 }
-                count = (int)cmd.ExecuteScalar() + 1;
+                
             }
             this.accNum = birthYear(dtpBdate.Text).ToString() + "-" + currentYear.ToString() + "-" + count.ToString();
 
