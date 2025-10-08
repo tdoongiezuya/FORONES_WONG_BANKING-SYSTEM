@@ -36,10 +36,10 @@
             // btnRegistration
             // 
             this.btnRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistration.Location = new System.Drawing.Point(12, 12);
-            this.btnRegistration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegistration.Location = new System.Drawing.Point(9, 10);
+            this.btnRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegistration.Name = "btnRegistration";
-            this.btnRegistration.Size = new System.Drawing.Size(244, 47);
+            this.btnRegistration.Size = new System.Drawing.Size(183, 38);
             this.btnRegistration.TabIndex = 0;
             this.btnRegistration.Text = "REGISTRATION";
             this.btnRegistration.UseVisualStyleBackColor = true;
@@ -48,10 +48,10 @@
             // btnDisInfo
             // 
             this.btnDisInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisInfo.Location = new System.Drawing.Point(261, 12);
-            this.btnDisInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDisInfo.Location = new System.Drawing.Point(196, 10);
+            this.btnDisInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDisInfo.Name = "btnDisInfo";
-            this.btnDisInfo.Size = new System.Drawing.Size(283, 47);
+            this.btnDisInfo.Size = new System.Drawing.Size(212, 38);
             this.btnDisInfo.TabIndex = 1;
             this.btnDisInfo.Text = "DISPLAY INFORMATION";
             this.btnDisInfo.UseVisualStyleBackColor = true;
@@ -60,10 +60,10 @@
             // btnLogout
             // 
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(551, 14);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(413, 11);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 47);
+            this.btnLogout.Size = new System.Drawing.Size(104, 38);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -71,13 +71,15 @@
             // 
             // frmDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 540);
+            this.ClientSize = new System.Drawing.Size(810, 439);
+            this.ControlBox = false;
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnDisInfo);
             this.Controls.Add(this.btnRegistration);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDashboard";

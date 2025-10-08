@@ -62,9 +62,10 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(278, 167);
+            this.lblName.Location = new System.Drawing.Point(208, 136);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(49, 25);
+            this.lblName.Size = new System.Drawing.Size(38, 20);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "N/A";
             // 
@@ -72,9 +73,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(70, 167);
+            this.label1.Location = new System.Drawing.Point(52, 136);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 25);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name: ";
             // 
@@ -82,9 +84,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(70, 218);
+            this.label2.Location = new System.Drawing.Point(52, 177);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 25);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Gender:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -93,9 +96,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(415, 218);
+            this.label3.Location = new System.Drawing.Point(311, 177);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 25);
+            this.label3.Size = new System.Drawing.Size(46, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Age:";
             // 
@@ -103,9 +107,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(70, 269);
+            this.label4.Location = new System.Drawing.Point(52, 219);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 25);
+            this.label4.Size = new System.Drawing.Size(88, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Birthdate:";
             // 
@@ -113,9 +118,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(70, 319);
+            this.label5.Location = new System.Drawing.Point(52, 259);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 25);
+            this.label5.Size = new System.Drawing.Size(109, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "Civil Status: ";
             // 
@@ -123,9 +129,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(70, 370);
+            this.label6.Location = new System.Drawing.Point(52, 301);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 25);
+            this.label6.Size = new System.Drawing.Size(80, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "Address:";
             // 
@@ -133,9 +140,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(70, 420);
+            this.label7.Location = new System.Drawing.Point(52, 341);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(181, 25);
+            this.label7.Size = new System.Drawing.Size(149, 20);
             this.label7.TabIndex = 7;
             this.label7.Text = "Contact Number: ";
             // 
@@ -143,9 +151,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(70, 474);
+            this.label8.Location = new System.Drawing.Point(52, 385);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 25);
+            this.label8.Size = new System.Drawing.Size(58, 20);
             this.label8.TabIndex = 8;
             this.label8.Text = "Email:";
             // 
@@ -153,9 +162,10 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(278, 218);
+            this.lblGender.Location = new System.Drawing.Point(208, 177);
+            this.lblGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(49, 25);
+            this.lblGender.Size = new System.Drawing.Size(38, 20);
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "N/A";
             // 
@@ -163,9 +173,10 @@
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(508, 218);
+            this.lblAge.Location = new System.Drawing.Point(381, 177);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(49, 25);
+            this.lblAge.Size = new System.Drawing.Size(38, 20);
             this.lblAge.TabIndex = 10;
             this.lblAge.Text = "N/A";
             // 
@@ -173,9 +184,10 @@
             // 
             this.lblBdate.AutoSize = true;
             this.lblBdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBdate.Location = new System.Drawing.Point(278, 269);
+            this.lblBdate.Location = new System.Drawing.Point(208, 219);
+            this.lblBdate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBdate.Name = "lblBdate";
-            this.lblBdate.Size = new System.Drawing.Size(49, 25);
+            this.lblBdate.Size = new System.Drawing.Size(38, 20);
             this.lblBdate.TabIndex = 11;
             this.lblBdate.Text = "N/A";
             // 
@@ -183,9 +195,10 @@
             // 
             this.lblCStatus.AutoSize = true;
             this.lblCStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCStatus.Location = new System.Drawing.Point(278, 319);
+            this.lblCStatus.Location = new System.Drawing.Point(208, 259);
+            this.lblCStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCStatus.Name = "lblCStatus";
-            this.lblCStatus.Size = new System.Drawing.Size(49, 25);
+            this.lblCStatus.Size = new System.Drawing.Size(38, 20);
             this.lblCStatus.TabIndex = 12;
             this.lblCStatus.Text = "N/A";
             // 
@@ -193,9 +206,10 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(278, 370);
+            this.lblAddress.Location = new System.Drawing.Point(208, 301);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(49, 25);
+            this.lblAddress.Size = new System.Drawing.Size(38, 20);
             this.lblAddress.TabIndex = 13;
             this.lblAddress.Text = "N/A";
             // 
@@ -203,9 +217,10 @@
             // 
             this.lblCnumber.AutoSize = true;
             this.lblCnumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCnumber.Location = new System.Drawing.Point(278, 420);
+            this.lblCnumber.Location = new System.Drawing.Point(208, 341);
+            this.lblCnumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCnumber.Name = "lblCnumber";
-            this.lblCnumber.Size = new System.Drawing.Size(49, 25);
+            this.lblCnumber.Size = new System.Drawing.Size(38, 20);
             this.lblCnumber.TabIndex = 14;
             this.lblCnumber.Text = "N/A";
             // 
@@ -213,9 +228,10 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(278, 474);
+            this.lblEmail.Location = new System.Drawing.Point(208, 385);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(49, 25);
+            this.lblEmail.Size = new System.Drawing.Size(38, 20);
             this.lblEmail.TabIndex = 15;
             this.lblEmail.Text = "N/A";
             this.lblEmail.Click += new System.EventHandler(this.label15_Click);
@@ -233,10 +249,10 @@
             this.listViewCustomers.FullRowSelect = true;
             this.listViewCustomers.GridLines = true;
             this.listViewCustomers.HideSelection = false;
-            this.listViewCustomers.Location = new System.Drawing.Point(690, 34);
-            this.listViewCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewCustomers.Location = new System.Drawing.Point(518, 28);
+            this.listViewCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewCustomers.Name = "listViewCustomers";
-            this.listViewCustomers.Size = new System.Drawing.Size(378, 593);
+            this.listViewCustomers.Size = new System.Drawing.Size(284, 483);
             this.listViewCustomers.TabIndex = 16;
             this.listViewCustomers.TileSize = new System.Drawing.Size(10, 1);
             this.listViewCustomers.UseCompatibleStateImageBehavior = false;
@@ -273,9 +289,10 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(458, 587);
+            this.btnClose.Location = new System.Drawing.Point(344, 477);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 40);
+            this.btnClose.Size = new System.Drawing.Size(106, 32);
             this.btnClose.TabIndex = 17;
             this.btnClose.Text = "CLOSE";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -285,9 +302,10 @@
             // 
             this.lbl9.AutoSize = true;
             this.lbl9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl9.Location = new System.Drawing.Point(70, 117);
+            this.lbl9.Location = new System.Drawing.Point(52, 95);
+            this.lbl9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(139, 25);
+            this.lbl9.Size = new System.Drawing.Size(115, 20);
             this.lbl9.TabIndex = 18;
             this.lbl9.Text = "Customer ID:";
             // 
@@ -295,9 +313,10 @@
             // 
             this.lblCId.AutoSize = true;
             this.lblCId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCId.Location = new System.Drawing.Point(278, 117);
+            this.lblCId.Location = new System.Drawing.Point(208, 95);
+            this.lblCId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCId.Name = "lblCId";
-            this.lblCId.Size = new System.Drawing.Size(49, 25);
+            this.lblCId.Size = new System.Drawing.Size(38, 20);
             this.lblCId.TabIndex = 19;
             this.lblCId.Text = "N/A";
             // 
@@ -305,20 +324,21 @@
             // 
             this.listBoxCustomers.FormattingEnabled = true;
             this.listBoxCustomers.HorizontalScrollbar = true;
-            this.listBoxCustomers.ItemHeight = 16;
-            this.listBoxCustomers.Location = new System.Drawing.Point(1103, 34);
+            this.listBoxCustomers.Location = new System.Drawing.Point(827, 28);
+            this.listBoxCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxCustomers.Name = "listBoxCustomers";
             this.listBoxCustomers.ScrollAlwaysVisible = true;
-            this.listBoxCustomers.Size = new System.Drawing.Size(332, 596);
+            this.listBoxCustomers.Size = new System.Drawing.Size(250, 485);
             this.listBoxCustomers.TabIndex = 20;
             this.listBoxCustomers.TabStop = false;
             this.listBoxCustomers.SelectedIndexChanged += new System.EventHandler(this.listBoxCustomers_SelectedIndexChanged);
             // 
             // frmDisplayInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1459, 755);
+            this.ClientSize = new System.Drawing.Size(1094, 613);
+            this.ControlBox = false;
             this.Controls.Add(this.listBoxCustomers);
             this.Controls.Add(this.lblCId);
             this.Controls.Add(this.lbl9);
@@ -341,8 +361,10 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDisplayInfo";
             this.Text = "frmDisplayInfo";
             this.Load += new System.EventHandler(this.frmDisplayInfo_Load);
