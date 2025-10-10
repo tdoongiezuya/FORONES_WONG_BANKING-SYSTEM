@@ -26,8 +26,8 @@ namespace WONG_BANKING.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BankDB;Integrated Security=Tru" +
-            "e;Encrypt=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-O01MVQF\\SQLEXPRESS;Initial Catalog=BankDB;Integrated Security" +
+            "=True;Encrypt=False;TrustServerCertificate=True;\n")]
         public string BankDBConnectionString {
             get {
                 return ((string)(this["BankDBConnectionString"]));

@@ -48,34 +48,30 @@ namespace WONG_BANKING
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text, password = txtPassword.Text;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
-            if ((username.Trim().Equals("admin"))&&(password.Trim().Equals("admin")))
+            if (username == "admin" && password == "admin")
             {
                 MessageBox.Show("Welcome, Admin!");
                 new frmDashboard().Show();
                 this.Hide();
 
-                
+                return;
             }
-            else
-            {
-                MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel , MessageBoxIcon.Error);
-            }
-
             using (SqlConnection conn = DBHelper.GetConnection())
             {
-                string query = "SELECT * FROM Customers WHERE Email=@user AND AccountNumber=@pass";
+                string query = "SELECT * FROM [dbo].[Customers] WHERE Email=@user AND AccountNumber=@pass";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@user", username);
-                cmd.Parameters.AddWithValue ("@pass", password);
+                cmd.Parameters.AddWithValue("@pass", password);
 
                 conn.Open();
-                SqlDataReader reader =  cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                if(reader.Read())
+                if (reader.Read())
                 {
-                    Session.UserLevel = reader["AccountNumber"].ToString() ;
+                    Session.UserLevel = reader["AccountNumber"].ToString();
                     Customer customer = new Customer()
                     {
                         CustomerID = reader["CustomerID"].ToString(),
@@ -95,7 +91,6 @@ namespace WONG_BANKING
                     Session.CurrentCustomer = customer;
 
                     MessageBox.Show($"Welcome, {customer.Name.Split(' ')[0]}!");
-
                     new frmDashboard().Show();
                     this.Hide();
                 }
@@ -104,10 +99,8 @@ namespace WONG_BANKING
                     MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 }
             }
-            
-            
-
         }
+
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {

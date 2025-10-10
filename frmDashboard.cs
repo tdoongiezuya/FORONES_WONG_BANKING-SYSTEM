@@ -35,7 +35,7 @@ namespace WONG_BANKING
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnLogout_Click_1(object sender, EventArgs e)
@@ -48,6 +48,20 @@ namespace WONG_BANKING
         {
             new frmDeposit().Show();
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void btnRegistration_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnRegistration.BackColor = Color.DarkViolet;
+        }
+
+        private void btnRegistration_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnRegistration.BackColor = Color.MediumPurple;
         }
     }
 }
