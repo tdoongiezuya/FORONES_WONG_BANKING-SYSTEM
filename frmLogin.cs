@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace WONG_BANKING
 {
     public partial class frmLogin : Form
     {
-        string username = "admin", password = "admin";
+        
         public frmLogin()
         {
             InitializeComponent();
@@ -47,14 +48,63 @@ namespace WONG_BANKING
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if((txtUsername.Text.Trim().Equals(username))&&(txtPassword.Text.Trim().Equals(password)))
+            string username = txtUsername.Text, password = txtPassword.Text;
+
+            if ((username.Trim().Equals("admin"))&&(password.Trim().Equals("admin")))
             {
+                MessageBox.Show("Welcome, Admin!");
                 new frmDashboard().Show();
                 this.Hide();
-            } else
-            {
-                MessageBox.Show("Invalid Credentials.");
+
+                
             }
+            else
+            {
+                MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel , MessageBoxIcon.Error);
+            }
+
+            using (SqlConnection conn = DBHelper.GetConnection())
+            {
+                string query = "SELECT * FROM Customers WHERE Email=@user AND AccountNumber=@pass";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@user", username);
+                cmd.Parameters.AddWithValue ("@pass", password);
+
+                conn.Open();
+                SqlDataReader reader =  cmd.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    Session.UserLevel = reader["AccountNumber"].ToString() ;
+                    Customer customer = new Customer()
+                    {
+                        CustomerID = reader["CustomerID"].ToString(),
+                        AccNum = reader["AccountNumber"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        Gender = reader["Gender"].ToString(),
+                        Age = Convert.ToInt32(reader["Age"]),
+                        Birthdate = reader["Birthdate"].ToString(),
+                        Address = reader["Address"].ToString(),
+                        CivilStatus = reader["CivilStatus"].ToString(),
+                        ContactNumber = reader["ContactNumber"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        ImagePath = reader["ImagePath"].ToString(),
+                        Balance = Convert.ToDouble(reader["Balance"])
+                    };
+
+                    Session.CurrentCustomer = customer;
+
+                    MessageBox.Show($"Welcome, {customer.Name.Split(' ')[0]}!");
+
+                    new frmDashboard().Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                }
+            }
+            
             
 
         }

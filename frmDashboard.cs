@@ -43,5 +43,11 @@ namespace WONG_BANKING
             new frmLogin().Show();
             this.Hide();    
         }
+
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            new frmDeposit().Show();
+            this.Hide();
+        }
     }
 }

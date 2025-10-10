@@ -1,0 +1,2 @@
+﻿ALTER TABLE Customers
+ADD Balance DECIMAL(18,2)

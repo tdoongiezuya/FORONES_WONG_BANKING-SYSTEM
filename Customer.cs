@@ -132,12 +132,14 @@ namespace WONG_BANKING
         public string ImagePath { get; set; }
         public string AccNum { get; set; }
 
+        public double Balance { get; set; }
+
         public void saveQuery()
         {
             using (SqlConnection conn = DBHelper.GetConnection())
             {
                 conn.Open();
-                string query = "INSERT INTO Customers VALUES (@CustomerID,  @AccNum, @Name, @Gender, @Age, @Birthdate, @Address, @CivilStatus, @ContactNumber, @Email, @ImagePath)";
+                string query = "INSERT INTO Customers VALUES (@CustomerID,  @AccNum, @Name, @Gender, @Age, @Birthdate, @Address, @CivilStatus, @ContactNumber, @Email, @ImagePath. @Balance)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -152,6 +154,7 @@ namespace WONG_BANKING
                 cmd.Parameters.AddWithValue("@ContactNumber", ContactNumber);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@ImagePath", ImagePath);
+                cmd.Parameters.AddWithValue("@Balance", Balance);
 
                 cmd.ExecuteNonQuery();
             }

@@ -89,21 +89,7 @@ namespace WONG_BANKING
             this.Hide();
         }
 
-        private void listBoxCustomers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = listBoxCustomers.SelectedItem.ToString();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-            lblCId.Text = selectedItem.Split(',')[0].Trim();
-            lblName.Text = selectedItem.Split(',')[1].Trim();
-            lblGender.Text = selectedItem.Split(',')[2].Trim();
-            lblAge.Text = selectedItem.Split(',')[3].Trim();
-            lblBdate.Text = selectedItem.Split(',')[4].Trim() + " " + selectedItem.Split(',')[5].Trim();
-            lblCStatus.Text = selectedItem.Split(',')[6].Trim();
-            lblAddress.Text = selectedItem.Split(',')[7].Trim();
-            lblCnumber.Text = selectedItem.Split(',')[8].Trim();
-            lblEmail.Text = selectedItem.Split(',')[9].Trim();
-
-        }
-
+        
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -137,6 +123,11 @@ namespace WONG_BANKING
                 lblCnumber.Text = row.Cells[8].Value.ToString();
                 lblEmail.Text = row.Cells[9].Value.ToString();
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
