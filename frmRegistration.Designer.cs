@@ -64,6 +64,7 @@
             this.txtInitialDeposit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.rbtNone = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -458,12 +459,26 @@
             this.label17.TabIndex = 24;
             this.label17.Text = "Email: ";
             // 
+            // rbtNone
+            // 
+            this.rbtNone.AutoSize = true;
+            this.rbtNone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtNone.Location = new System.Drawing.Point(252, 268);
+            this.rbtNone.Margin = new System.Windows.Forms.Padding(2);
+            this.rbtNone.Name = "rbtNone";
+            this.rbtNone.Size = new System.Drawing.Size(65, 24);
+            this.rbtNone.TabIndex = 26;
+            this.rbtNone.TabStop = true;
+            this.rbtNone.Text = "None";
+            this.rbtNone.UseVisualStyleBackColor = true;
+            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 587);
             this.ControlBox = false;
+            this.Controls.Add(this.rbtNone);
             this.Controls.Add(this.txtInitialDeposit);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
@@ -549,5 +564,6 @@
         private System.Windows.Forms.TextBox txtInitialDeposit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.RadioButton rbtNone;
     }
 }

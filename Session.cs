@@ -10,5 +10,11 @@ namespace WONG_BANKING
     {
         public static Customer CurrentCustomer { get; set; }
         public static string UserLevel { get; set; }
+
+        public static void clearSession()
+        {
+            UserLevel = "";
+            CurrentCustomer = null;
+        }
     }
 }
