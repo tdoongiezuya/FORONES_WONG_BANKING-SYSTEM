@@ -106,7 +106,9 @@ namespace WONG_BANKING
         {
             if (Session.UserLevel == "Admin" || Session.UserLevel == "Customer")
             {
-                new frmDashboard().Show();
+                frmDashboard dashboard = new frmDashboard();
+                dashboard.CurrentUserEmail = txtEmail.Text; // 👈 pass email from registration form
+                dashboard.Show();
                 this.Hide();
             } else
             {
