@@ -48,16 +48,16 @@ namespace WONG_BANKING
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string username = txtUsername.Text.Trim(), password = txtPassword.Text.Trim();
 
-            if (username == "admin" && password == "admin")
+            if ((username.Equals("admin"))&&(password.Equals("admin")))
             {
+                Session.UserLevel = "Admin";
                 MessageBox.Show("Welcome, Admin!");
                 new frmDashboard().Show();
                 this.Hide();
 
-                return;
+                
             }
             using (SqlConnection conn = DBHelper.GetConnection())
             {
@@ -65,48 +65,74 @@ namespace WONG_BANKING
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@user", username);
                 cmd.Parameters.AddWithValue("@pass", password);
-
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+            else
+            {
+                try
                 {
-                    Session.UserLevel = reader["AccountNumber"].ToString();
-                    Customer customer = new Customer()
+                    using (SqlConnection conn = DBHelper.GetConnection())
                     {
-                        CustomerID = reader["CustomerID"].ToString(),
-                        AccNum = reader["AccountNumber"].ToString(),
-                        Name = reader["Name"].ToString(),
-                        Gender = reader["Gender"].ToString(),
-                        Age = Convert.ToInt32(reader["Age"]),
-                        Birthdate = reader["Birthdate"].ToString(),
-                        Address = reader["Address"].ToString(),
-                        CivilStatus = reader["CivilStatus"].ToString(),
-                        ContactNumber = reader["ContactNumber"].ToString(),
-                        Email = reader["Email"].ToString(),
-                        ImagePath = reader["ImagePath"].ToString(),
-                        Balance = Convert.ToDouble(reader["Balance"])
-                    };
+                        string query = "SELECT * FROM Customers WHERE Email=@user AND AccountNumber=@pass";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@user", username);
+                        cmd.Parameters.AddWithValue("@pass", password);
 
-                    Session.CurrentCustomer = customer;
+                        conn.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
 
-                    MessageBox.Show($"Welcome, {customer.Name.Split(' ')[0]}!");
-                    new frmDashboard().Show();
-                    this.Hide();
+                        MessageBox.Show($"Email: {username}\nPassword: {password}");
+                        if (reader.Read()) //check if any record exists
+                        {
+                            Session.UserLevel = "Customer";
+                            Customer customer = new Customer()
+                            {
+                                CustomerID = reader["CustomerID"].ToString(),
+                                AccNum = reader["AccountNumber"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Gender = reader["Gender"].ToString(),
+                                Age = Convert.ToInt32(reader["Age"]),
+                                Birthdate = reader["Birthdate"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                CivilStatus = reader["CivilStatus"].ToString(),
+                                ContactNumber = reader["ContactNumber"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                ImagePath = reader["ImagePath"].ToString(),
+                                Balance = Convert.ToDouble(reader["Balance"])
+                            };
+
+                            Session.CurrentCustomer = customer;
+
+                            MessageBox.Show($"Welcome, {customer.Name.Split(' ')[0]}!");
+
+                            new frmDashboard().Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                else
+                catch (Exception except)
                 {
-                    MessageBox.Show("Invalid Credentials.", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    MessageBox.Show("DB Error found\n"+except.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
 
+           
+            
+            
+
+        }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        
+        private void linkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmRegistration().Show();
+            this.Hide();
+        }
     }
 }

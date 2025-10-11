@@ -12,7 +12,8 @@ namespace WONG_BANKING
 {
     public partial class frmDashboard : Form
     {
-        
+        private string[] imagePaths;
+        private int currentIndex = 0;
      
         public frmDashboard()
         {
@@ -35,7 +36,27 @@ namespace WONG_BANKING
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
-           
+            imagePaths = new string[]
+            {
+                 @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\bank.jpg",
+                 @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\deposit.jpg",
+                 @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\withdraw.jpg"
+            };
+            picCarousel.Image = Image.FromFile(imagePaths[currentIndex]);
+            picCarousel.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Configure timer
+            timer1.Interval = 3000; // 3 seconds
+            timer1.Tick += Timer1_Tick;
+            timer1.Start();
+        }
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            currentIndex++;
+            if (currentIndex >= imagePaths.Length)
+                currentIndex = 0;
+
+            picCarousel.Image = Image.FromFile(imagePaths[currentIndex]);
         }
 
         private void btnLogout_Click_1(object sender, EventArgs e)

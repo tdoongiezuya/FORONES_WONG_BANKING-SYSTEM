@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDisInfo = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCheckBalance = new System.Windows.Forms.Button();
@@ -35,7 +36,10 @@
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnRegistration = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picCarousel = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCarousel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDisInfo
@@ -124,6 +128,14 @@
             this.panel1.Size = new System.Drawing.Size(203, 710);
             this.panel1.TabIndex = 6;
             // 
+            // picCarousel
+            // 
+            this.picCarousel.Location = new System.Drawing.Point(307, 234);
+            this.picCarousel.Name = "picCarousel";
+            this.picCarousel.Size = new System.Drawing.Size(469, 356);
+            this.picCarousel.TabIndex = 7;
+            this.picCarousel.TabStop = false;
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,15 +143,16 @@
             this.BackgroundImage = global::WONG_BANKING.Properties.Resources.download;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(832, 710);
+            this.Controls.Add(this.picCarousel);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDashboard";
             this.Text = "DASHBOARD";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picCarousel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +165,7 @@
         private System.Windows.Forms.Button btnDeposit;
         private System.Windows.Forms.Button btnRegistration;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox picCarousel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
