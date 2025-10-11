@@ -13,14 +13,12 @@ using System.Data.SqlClient;
 namespace WONG_BANKING
 {
 
-
-
     public partial class frmRegistration : Form
     {
         string gender, customer_id, accNum;
         int age;
         int currentYear = DateTime.Now.Year, count = 1;
-      
+       
         public frmRegistration()
         {
             InitializeComponent();
@@ -38,6 +36,9 @@ namespace WONG_BANKING
             customerID_Generator();
             
             cboCivilStatus.SelectedIndex = 5;
+            rbtNone.Checked = true;
+            rbtNone.Visible = false;
+
         }
 
         private void frmRegistration_Click(object sender, EventArgs e)
@@ -47,21 +48,18 @@ namespace WONG_BANKING
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-           
-            //List<Customer> instance = Customer.getInstance();
             
             age = calculateAge(birthYear(dtpBdate.Text));
-
             
-            if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text, Convert.ToDouble(txtInitialDeposit.Text) ))
+            
+            if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text,txtInitialDeposit.Text))
             {
                 
                 if (rbtMale.Checked == true)
                 {
                     gender = rbtMale.Text;
                 }
-                else
+                else if (rbtFemale.Checked == true)
                 {
                     gender = rbtFemale.Text;
                 }
@@ -78,14 +76,15 @@ namespace WONG_BANKING
                     ContactNumber = txtCNumber.Text,
                     Email = txtEmail.Text,
                     ImagePath = pbProfile.ImageLocation,
-                    AccNum = this.accNum
+                    AccNum = this.accNum,
+                    Balance = Convert.ToDouble(txtInitialDeposit.Text)
                 };
 
                 //instance.Add(cust);
 
                 cust.saveQuery();
 
-                MessageBox.Show($"Registration Successful!\n\nACCOUNT NUMBER: {accNum}\nYour username will be your email, and your password will be your account number");
+                MessageBox.Show($"Registration Successful!\n\nACCOUNT NUMBER: {accNum}\nThe username will be the EMAIL, and your password will be the ACCOUNT NUMBER");
                 clearItems();
                 customerID_Generator();
                 
@@ -104,8 +103,16 @@ namespace WONG_BANKING
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            new frmDashboard().Show();
-            this.Hide();
+            if (Session.UserLevel == "Admin" || Session.UserLevel == "Customer")
+            {
+                new frmDashboard().Show();
+                this.Hide();
+            } else
+            {
+                new frmLogin().Show();
+                this.Hide();
+            }
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -146,11 +153,13 @@ namespace WONG_BANKING
 
         private void clearItems()
         {
-            txtName.Text = txtAddress.Text = txtEmail.Text = txtCNumber.Text = "";
+            txtName.Text = txtAddress.Text = txtEmail.Text = txtCNumber.Text = txtInitialDeposit.Text = "";
             rbtFemale.Checked = rbtMale.Checked = false;
             dtpBdate.Text = DateTime.Now.ToString();
             cboCivilStatus.SelectedIndex = 5;
             pbProfile.Image = null;
+            rbtNone.Checked = true;
+            
         }
 
         public int  calculateAge(int birthyear)
@@ -188,10 +197,10 @@ namespace WONG_BANKING
             }
         }
 
-        public bool validation(string email, string address, string cNumber, int age, string name, double initialDeposit)
+        public bool validation(string email, string address, string cNumber, int age, string name, string initialDeposit)
         {
             errorProvider1.Clear();
-            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true, validDeposit = true;
+            bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true, validDeposit = true, validGender = true;
 
             string email_pattern = @"^[^@\s]+@[a-zA-Z]+\.[a-zA-Z]+$";
             string address_pattern = @"^[A-Za-z0-9.,\-\s]+$";
@@ -206,6 +215,11 @@ namespace WONG_BANKING
             {
                 errorProvider1.SetError(txtName, "must not be empty");
                 validEmail = false;
+            }
+            if(rbtNone.Checked == true)
+            {
+                errorProvider1.SetError(rbtFemale, "must choose gender");
+                validGender = false;
             }
             if ( age < 1)
             {
@@ -231,26 +245,27 @@ namespace WONG_BANKING
             {
                 errorProvider1.SetError(btnUpload, "Provide image");
                 validImage = false;
-            }
-            if (initialDeposit < 500)
+            } 
+            if (string.IsNullOrWhiteSpace(initialDeposit))
             {
                 errorProvider1.SetError(txtInitialDeposit, "Your initial deposit should not be less than 500.");
                 validDeposit = false;
+            } else if (double.TryParse(initialDeposit, out double amount) || amount < 500)
+            {
+                errorProvider1.SetError(txtInitialDeposit, "Input valid Deposit.\nYour initial deposit should not be less than 500.");
             }
 
-            if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage || !validDeposit)
+            if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage || !validDeposit || !validGender)
             {
                 return false;
             }
 
             return true;
-
-            
         }
         public void customerID_Generator()
         {
             Random rand = new Random();
-            this.customer_id = "CUST" + rand.Next(10).ToString() + rand.Next(300).ToString();
+            this.customer_id = "CUST" + rand.Next(0,10000).ToString("0000");
             txtCustomerID.Text = this.customer_id;
         }
 

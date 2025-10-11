@@ -139,7 +139,7 @@ namespace WONG_BANKING
             using (SqlConnection conn = DBHelper.GetConnection())
             {
                 conn.Open();
-                string query = "INSERT INTO Customers VALUES (@CustomerID,  @AccNum, @Name, @Gender, @Age, @Birthdate, @Address, @CivilStatus, @ContactNumber, @Email, @ImagePath. @Balance)";
+                string query = "INSERT INTO Customers VALUES (@CustomerID,  @AccNum, @Name, @Gender, @Age, @Birthdate, @Address, @CivilStatus, @ContactNumber, @Email, @ImagePath, @Balance)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 

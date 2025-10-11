@@ -72,6 +72,12 @@
     <Compile Include="frmDisplayInfo.Designer.cs">
       <DependentUpon>frmDisplayInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHistoryOfTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistoryOfTransaction.Designer.cs">
+      <DependentUpon>frmHistoryOfTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDisplayInfo.resx">
       <DependentUpon>frmDisplayInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistoryOfTransaction.resx">
+      <DependentUpon>frmHistoryOfTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
