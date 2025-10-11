@@ -66,12 +66,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblAcc = new System.Windows.Forms.Label();
+            this.txtAccNum = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDeposit = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.txtAccNum = new System.Windows.Forms.TextBox();
-            this.lblAcc = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -676,7 +676,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.splitContainer1.Panel1.Controls.Add(this.lblAcc);
             this.splitContainer1.Panel1.Controls.Add(this.txtAccNum);
             this.splitContainer1.Panel1.Controls.Add(this.btnClose);
@@ -697,6 +697,30 @@
             this.splitContainer1.Size = new System.Drawing.Size(741, 506);
             this.splitContainer1.SplitterDistance = 270;
             this.splitContainer1.TabIndex = 6;
+            // 
+            // lblAcc
+            // 
+            this.lblAcc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAcc.AutoSize = true;
+            this.lblAcc.BackColor = System.Drawing.SystemColors.Control;
+            this.lblAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcc.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblAcc.Location = new System.Drawing.Point(47, 148);
+            this.lblAcc.Name = "lblAcc";
+            this.lblAcc.Size = new System.Drawing.Size(175, 20);
+            this.lblAcc.TabIndex = 6;
+            this.lblAcc.Text = "Enter Account Number:";
+            this.lblAcc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAccNum
+            // 
+            this.txtAccNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccNum.Location = new System.Drawing.Point(49, 176);
+            this.txtAccNum.Name = "txtAccNum";
+            this.txtAccNum.Size = new System.Drawing.Size(173, 26);
+            this.txtAccNum.TabIndex = 6;
             // 
             // btnClose
             // 
@@ -743,30 +767,6 @@
             this.label26.Size = new System.Drawing.Size(184, 44);
             this.label26.TabIndex = 0;
             this.label26.Text = "DEPOSIT";
-            // 
-            // txtAccNum
-            // 
-            this.txtAccNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAccNum.Location = new System.Drawing.Point(49, 176);
-            this.txtAccNum.Name = "txtAccNum";
-            this.txtAccNum.Size = new System.Drawing.Size(173, 26);
-            this.txtAccNum.TabIndex = 6;
-            // 
-            // lblAcc
-            // 
-            this.lblAcc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAcc.AutoSize = true;
-            this.lblAcc.BackColor = System.Drawing.SystemColors.Control;
-            this.lblAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcc.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblAcc.Location = new System.Drawing.Point(47, 148);
-            this.lblAcc.Name = "lblAcc";
-            this.lblAcc.Size = new System.Drawing.Size(175, 20);
-            this.lblAcc.TabIndex = 6;
-            this.lblAcc.Text = "Enter Account Number:";
-            this.lblAcc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmDeposit
             // 
