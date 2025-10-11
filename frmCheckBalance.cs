@@ -75,5 +75,10 @@ namespace WONG_BANKING
             new frmDashboard().Show();
             this.Hide();
         }
+
+        private void frmCheckBalance_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

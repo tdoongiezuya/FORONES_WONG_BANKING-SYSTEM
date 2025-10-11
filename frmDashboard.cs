@@ -24,7 +24,7 @@ namespace WONG_BANKING
         private void btnDisInfo_Click(object sender, EventArgs e)
         {
             
-            new frmDisplayInfo().Show();
+            new frmViewProfile().Show();
             this.Hide();
         }
 
@@ -38,7 +38,7 @@ namespace WONG_BANKING
         {
             imagePaths = new string[]
             {
-                 @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\bank.jpg",
+                 @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\WORLD NO.1 SAFEST BANK.png",
                  @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\deposit.jpg",
                  @"C:\Users\USER\source\repos\tdoongiezuya\FORONES_WONG_BANKING-SYSTEM\Resources\withdraw.jpg"
             };
@@ -83,6 +83,18 @@ namespace WONG_BANKING
         private void btnRegistration_MouseUp(object sender, MouseEventArgs e)
         {
             btnRegistration.BackColor = Color.MediumPurple;
+        }
+
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            new frmWithdraw().Show();
+            this.Hide();
+        }
+
+        private void btnCheckBalance_Click(object sender, EventArgs e)
+        {
+            new frmCheckBalance().Show();
+            this.Hide();
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             this.btnDisInfo = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCheckBalance = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@
             this.btnCheckBalance.TabIndex = 5;
             this.btnCheckBalance.Text = "CHECK BALANCE";
             this.btnCheckBalance.UseVisualStyleBackColor = true;
+            this.btnCheckBalance.Click += new System.EventHandler(this.btnCheckBalance_Click);
             // 
             // btnWithdraw
             // 
@@ -89,6 +91,7 @@
             this.btnWithdraw.TabIndex = 4;
             this.btnWithdraw.Text = "WITHDRAW";
             this.btnWithdraw.UseVisualStyleBackColor = true;
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
             // 
             // btnDeposit
             // 
@@ -140,9 +143,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WONG_BANKING.Properties.Resources.download;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(832, 710);
+            this.ControlBox = false;
             this.Controls.Add(this.picCarousel);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);

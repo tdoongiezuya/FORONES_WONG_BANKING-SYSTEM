@@ -56,6 +56,10 @@ namespace WONG_BANKING
 
         }
 
-
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            new frmDashboard().Show();
+            this.Hide();
+        }
     }
 }

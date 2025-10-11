@@ -54,15 +54,16 @@ namespace WONG_BANKING
             
             if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text,txtInitialDeposit.Text))
             {
-                
-                if (rbtMale.Checked == true)
+
+                if (rbtMale.Checked)
                 {
                     gender = rbtMale.Text;
                 }
-                else if (rbtFemale.Checked == true)
+                else if (rbtFemale.Checked)
                 {
                     gender = rbtFemale.Text;
                 }
+                    
                 accNumber_Gen();
                 Customer cust = new Customer()
                 {
@@ -195,6 +196,16 @@ namespace WONG_BANKING
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&  e.KeyChar != '.') {
                 e.Handled = true;
             }
+        }
+
+        private void txtInitialDeposit_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         public bool validation(string email, string address, string cNumber, int age, string name, string initialDeposit)
