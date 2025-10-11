@@ -40,6 +40,8 @@ namespace WONG_BANKING
 
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            
+            Session.clearSession();
             new frmLogin().Show();
             this.Hide();    
         }
@@ -47,6 +49,12 @@ namespace WONG_BANKING
         private void btnDeposit_Click(object sender, EventArgs e)
         {
             new frmDeposit().Show();
+            this.Hide();
+        }
+
+        private void btnTransactionHistory_Click(object sender, EventArgs e)
+        {
+            new TransactionHistory().Show();
             this.Hide();
         }
     }

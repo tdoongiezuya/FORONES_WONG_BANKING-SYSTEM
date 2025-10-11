@@ -34,12 +34,13 @@
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnWithdraw = new System.Windows.Forms.Button();
             this.btnCheckBalance = new System.Windows.Forms.Button();
+            this.btnTransactionHistory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRegistration
             // 
             this.btnRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistration.Location = new System.Drawing.Point(293, 73);
+            this.btnRegistration.Location = new System.Drawing.Point(33, 33);
             this.btnRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistration.Name = "btnRegistration";
             this.btnRegistration.Size = new System.Drawing.Size(212, 38);
@@ -51,7 +52,7 @@
             // btnDisInfo
             // 
             this.btnDisInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisInfo.Location = new System.Drawing.Point(293, 290);
+            this.btnDisInfo.Location = new System.Drawing.Point(33, 304);
             this.btnDisInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnDisInfo.Name = "btnDisInfo";
             this.btnDisInfo.Size = new System.Drawing.Size(212, 38);
@@ -65,10 +66,10 @@
             this.btnLogout.BackColor = System.Drawing.Color.White;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnLogout.Location = new System.Drawing.Point(643, 378);
+            this.btnLogout.Location = new System.Drawing.Point(33, 361);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 38);
+            this.btnLogout.Size = new System.Drawing.Size(212, 38);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -77,7 +78,7 @@
             // btnDeposit
             // 
             this.btnDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeposit.Location = new System.Drawing.Point(293, 124);
+            this.btnDeposit.Location = new System.Drawing.Point(33, 84);
             this.btnDeposit.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeposit.Name = "btnDeposit";
             this.btnDeposit.Size = new System.Drawing.Size(212, 38);
@@ -89,7 +90,7 @@
             // btnWithdraw
             // 
             this.btnWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWithdraw.Location = new System.Drawing.Point(293, 178);
+            this.btnWithdraw.Location = new System.Drawing.Point(33, 138);
             this.btnWithdraw.Margin = new System.Windows.Forms.Padding(2);
             this.btnWithdraw.Name = "btnWithdraw";
             this.btnWithdraw.Size = new System.Drawing.Size(212, 38);
@@ -100,7 +101,7 @@
             // btnCheckBalance
             // 
             this.btnCheckBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckBalance.Location = new System.Drawing.Point(293, 234);
+            this.btnCheckBalance.Location = new System.Drawing.Point(33, 194);
             this.btnCheckBalance.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckBalance.Name = "btnCheckBalance";
             this.btnCheckBalance.Size = new System.Drawing.Size(212, 38);
@@ -108,11 +109,26 @@
             this.btnCheckBalance.Text = "CHECK BALANCE";
             this.btnCheckBalance.UseVisualStyleBackColor = true;
             // 
+            // btnTransactionHistory
+            // 
+            this.btnTransactionHistory.BackColor = System.Drawing.Color.White;
+            this.btnTransactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransactionHistory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnTransactionHistory.Location = new System.Drawing.Point(33, 245);
+            this.btnTransactionHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTransactionHistory.Name = "btnTransactionHistory";
+            this.btnTransactionHistory.Size = new System.Drawing.Size(212, 38);
+            this.btnTransactionHistory.TabIndex = 6;
+            this.btnTransactionHistory.Text = "TRANSACTION HISTORY";
+            this.btnTransactionHistory.UseVisualStyleBackColor = false;
+            this.btnTransactionHistory.Click += new System.EventHandler(this.btnTransactionHistory_Click);
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 439);
+            this.Controls.Add(this.btnTransactionHistory);
             this.Controls.Add(this.btnCheckBalance);
             this.Controls.Add(this.btnWithdraw);
             this.Controls.Add(this.btnDeposit);
@@ -138,5 +154,6 @@
         private System.Windows.Forms.Button btnDeposit;
         private System.Windows.Forms.Button btnWithdraw;
         private System.Windows.Forms.Button btnCheckBalance;
+        private System.Windows.Forms.Button btnTransactionHistory;
     }
 }
