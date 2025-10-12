@@ -23,7 +23,7 @@ namespace WONG_BANKING
         private void btnDisInfo_Click(object sender, EventArgs e)
         {
             
-            new frmDisplayInfo().Show();
+            new frmViewProfile().Show();
             this.Hide();
         }
 

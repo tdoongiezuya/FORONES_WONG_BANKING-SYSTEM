@@ -202,6 +202,11 @@ namespace WONG_BANKING
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         public bool validation(string email, string address, string cNumber, int age, string name, string initialDeposit)
         {
             errorProvider1.Clear();
