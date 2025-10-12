@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,13 +39,33 @@ namespace WONG_BANKING
             this.Close();
         }
 
+        private void frmDeposit_Load(object sender, EventArgs e)
+        {
+            if (Session.UserLevel == "Customer")
+            {
+                lblAcc.Visible = false;
+                txtAccNum.Visible = false;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txt1000.Text = txt500.Text = txt200.Text = txt100.Text = txt50.Text = txt20.Text = txt10.Text = txt5.Text = txt1.Text = txtDepositAmount.Text = txtAccNum.Text =  "";
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            new frmDashboard().Show();
+            this.Close();
+        }
+
         private void btnDeposit_Click(object sender, EventArgs e)
         {
             depositAmount = string.IsNullOrWhiteSpace(txtDepositAmount.Text) ? 0 : Convert.ToDouble(txtDepositAmount.Text);
-
+           
             if (Session.UserLevel == "Admin")
             {
-
+                
                 using (SqlConnection conn = DBHelper.GetConnection())
                 {
                     conn.Open();
@@ -55,22 +76,20 @@ namespace WONG_BANKING
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-
+                        
                         prevBalance = Convert.ToDouble(reader["Balance"]);
                         customerID = reader["CustomerID"].ToString();
-
-                    }
-                    else
+                        
+                    } else
                     {
                         MessageBox.Show("Account Number not found.");
                     }
-
+                    
                     reader.Close();
-
+                    
                 }
                 updateBalance();
-            }
-            else if (Session.UserLevel == "Customer")
+            } else if (Session.UserLevel == "Customer")
             {
                 Customer cust = Session.CurrentCustomer;
                 if (cust != null)
@@ -85,7 +104,7 @@ namespace WONG_BANKING
             {
                 MessageBox.Show("User level not detected.");
             }
-
+   
         }
 
         public frmDeposit()

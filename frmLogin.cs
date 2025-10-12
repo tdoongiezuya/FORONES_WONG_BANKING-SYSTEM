@@ -59,6 +59,12 @@ namespace WONG_BANKING
 
                 
             }
+            using (SqlConnection conn = DBHelper.GetConnection())
+            {
+                string query = "SELECT * FROM [dbo].[Customers] WHERE Email=@user AND AccountNumber=@pass";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@user", username);
+                cmd.Parameters.AddWithValue("@pass", password);
             else
             {
                 try

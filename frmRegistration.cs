@@ -54,12 +54,12 @@ namespace WONG_BANKING
             
             if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text,txtInitialDeposit.Text))
             {
-                
-                if (rbtMale.Checked == true)
+
+                if (rbtMale.Checked)
                 {
                     gender = rbtMale.Text;
                 }
-                else if (rbtFemale.Checked == true)
+                else if (rbtFemale.Checked)
                 {
                     gender = rbtFemale.Text;
                 } 
@@ -105,7 +105,9 @@ namespace WONG_BANKING
         {
             if (Session.UserLevel == "Admin" || Session.UserLevel == "Customer")
             {
-                new frmDashboard().Show();
+                frmDashboard dashboard = new frmDashboard();
+                dashboard.CurrentUserEmail = txtEmail.Text; // 👈 pass email from registration form
+                dashboard.Show();
                 this.Hide();
             } else
             {
