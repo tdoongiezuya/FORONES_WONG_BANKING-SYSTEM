@@ -72,12 +72,6 @@
     <Compile Include="frmDisplayInfo.Designer.cs">
       <DependentUpon>frmDisplayInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHistoryOfTransaction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHistoryOfTransaction.Designer.cs">
-      <DependentUpon>frmHistoryOfTransaction.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +98,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Session.cs" />
+    <Compile Include="TransactionHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionHistory.Designer.cs">
+      <DependentUpon>TransactionHistory.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,9 +112,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDisplayInfo.resx">
       <DependentUpon>frmDisplayInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHistoryOfTransaction.resx">
-      <DependentUpon>frmHistoryOfTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -129,6 +126,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TransactionHistory.resx">
+      <DependentUpon>TransactionHistory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BankDBDataSet.xsc">
       <DependentUpon>BankDBDataSet.xsd</DependentUpon>

@@ -62,8 +62,7 @@ namespace WONG_BANKING
                 else if (rbtFemale.Checked)
                 {
                     gender = rbtFemale.Text;
-                }
-                    
+                } 
                 accNumber_Gen();
                 Customer cust = new Customer()
                 {
@@ -200,12 +199,7 @@ namespace WONG_BANKING
             }
         }
 
-        private void txtInitialDeposit_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -227,9 +221,14 @@ namespace WONG_BANKING
             if (string.IsNullOrWhiteSpace(name))
             {
                 errorProvider1.SetError(txtName, "must not be empty");
-                validEmail = false;
+                validName = false;
             }
-            if(rbtNone.Checked == true)
+            //if(rbtNone.Checked == true)
+            //{
+            //    errorProvider1.SetError(rbtFemale, "must choose gender");
+            //    validGender = false;
+            //}
+            if (!rbtMale.Checked &&  !rbtFemale.Checked)
             {
                 errorProvider1.SetError(rbtFemale, "must choose gender");
                 validGender = false;
@@ -263,9 +262,14 @@ namespace WONG_BANKING
             {
                 errorProvider1.SetError(txtInitialDeposit, "Your initial deposit should not be less than 500.");
                 validDeposit = false;
-            } else if (double.TryParse(initialDeposit, out double amount) || amount < 500)
+            } else if (!double.TryParse(initialDeposit, out double amount))
+            {
+                errorProvider1.SetError(txtInitialDeposit, "Input valid Deposit.\nEnter numbers only.");
+                validDeposit = false;
+            } else if (amount < 500)
             {
                 errorProvider1.SetError(txtInitialDeposit, "Input valid Deposit.\nYour initial deposit should not be less than 500.");
+                validDeposit = false;
             }
 
             if (!validEmail || !validAddress || !validCNumber || !validAge || !validName || !validImage || !validDeposit || !validGender)

@@ -66,7 +66,7 @@
             this.btnLogout.Location = new System.Drawing.Point(32, 528);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(139, 38);
+            this.btnLogout.Size = new System.Drawing.Size(212, 38);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -164,6 +164,20 @@
             this.lblWelcome.Text = "N/A";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblWelcome.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // btnTransactionHistory
+            // 
+            this.btnTransactionHistory.BackColor = System.Drawing.Color.White;
+            this.btnTransactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransactionHistory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnTransactionHistory.Location = new System.Drawing.Point(33, 245);
+            this.btnTransactionHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTransactionHistory.Name = "btnTransactionHistory";
+            this.btnTransactionHistory.Size = new System.Drawing.Size(212, 38);
+            this.btnTransactionHistory.TabIndex = 6;
+            this.btnTransactionHistory.Text = "TRANSACTION HISTORY";
+            this.btnTransactionHistory.UseVisualStyleBackColor = false;
+            this.btnTransactionHistory.Click += new System.EventHandler(this.btnTransactionHistory_Click);
             // 
             // frmDashboard
             // 

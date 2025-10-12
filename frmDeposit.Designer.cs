@@ -578,7 +578,7 @@
             // txtDepositAmount
             // 
             this.txtDepositAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDepositAmount.Location = new System.Drawing.Point(49, 70);
+            this.txtDepositAmount.Location = new System.Drawing.Point(48, 63);
             this.txtDepositAmount.Name = "txtDepositAmount";
             this.txtDepositAmount.Size = new System.Drawing.Size(370, 26);
             this.txtDepositAmount.TabIndex = 1;
@@ -593,7 +593,7 @@
             this.label5.BackColor = System.Drawing.Color.SteelBlue;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label5.Location = new System.Drawing.Point(45, 109);
+            this.label5.Location = new System.Drawing.Point(44, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(306, 24);
             this.label5.TabIndex = 5;
@@ -676,7 +676,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.splitContainer1.Panel1.Controls.Add(this.lblAcc);
             this.splitContainer1.Panel1.Controls.Add(this.txtAccNum);
             this.splitContainer1.Panel1.Controls.Add(this.btnClose);
@@ -704,11 +704,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAcc.AutoSize = true;
-            this.lblAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcc.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblAcc.Location = new System.Drawing.Point(57, 139);
+            this.lblAcc.BackColor = System.Drawing.SystemColors.Control;
+            this.lblAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcc.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblAcc.Location = new System.Drawing.Point(47, 148);
             this.lblAcc.Name = "lblAcc";
-            this.lblAcc.Size = new System.Drawing.Size(209, 24);
+            this.lblAcc.Size = new System.Drawing.Size(175, 20);
             this.lblAcc.TabIndex = 6;
             this.lblAcc.Text = "Enter Account Number:";
             this.lblAcc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -716,11 +717,10 @@
             // txtAccNum
             // 
             this.txtAccNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAccNum.Location = new System.Drawing.Point(50, 171);
+            this.txtAccNum.Location = new System.Drawing.Point(49, 176);
             this.txtAccNum.Name = "txtAccNum";
             this.txtAccNum.Size = new System.Drawing.Size(173, 26);
             this.txtAccNum.TabIndex = 6;
-            this.txtAccNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // btnClose
             // 
@@ -762,7 +762,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(66, 53);
+            this.label26.Location = new System.Drawing.Point(41, 45);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(184, 44);
             this.label26.TabIndex = 0;
@@ -772,7 +772,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 504);
+            this.ClientSize = new System.Drawing.Size(739, 505);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MaximizeBox = false;
@@ -838,7 +838,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDeposit;
-        private System.Windows.Forms.Label lblAcc;
         private System.Windows.Forms.TextBox txtAccNum;
+        private System.Windows.Forms.Label lblAcc;
     }
 }

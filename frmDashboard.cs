@@ -219,6 +219,8 @@ namespace WONG_BANKING
 
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            
+            Session.clearSession();
             new frmLogin().Show();
             this.Hide();
         }
