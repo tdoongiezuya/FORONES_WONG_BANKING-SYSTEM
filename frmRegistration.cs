@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WONG_BANKING
 {
@@ -32,19 +34,13 @@ namespace WONG_BANKING
 
         private void frmRegistration_Load(object sender, EventArgs e)
         {
-            
-            customerID_Generator();
-            
             cboCivilStatus.SelectedIndex = 5;
             rbtNone.Checked = true;
             rbtNone.Visible = false;
 
+            customerID_Generator();
         }
 
-        private void frmRegistration_Click(object sender, EventArgs e)
-        {
-            new frmRegistration().ShowDialog();
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -54,12 +50,12 @@ namespace WONG_BANKING
             
             if (validation(txtEmail.Text, txtAddress.Text, txtCNumber.Text, age, txtName.Text,txtInitialDeposit.Text))
             {
-                
-                if (rbtMale.Checked == true)
+
+                if (rbtMale.Checked)
                 {
                     gender = rbtMale.Text;
                 }
-                else if (rbtFemale.Checked == true)
+                else if (rbtFemale.Checked)
                 {
                     gender = rbtFemale.Text;
                 } 
@@ -105,12 +101,11 @@ namespace WONG_BANKING
         {
             if (Session.UserLevel == "Admin" || Session.UserLevel == "Customer")
             {
-                new frmDashboard().Show();
-                this.Hide();
+                this.Close();
             } else
             {
                 new frmLogin().Show();
-                this.Hide();
+                this.Close();
             }
             
         }
@@ -173,15 +168,7 @@ namespace WONG_BANKING
         }
 
         
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void txtCNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -195,7 +182,13 @@ namespace WONG_BANKING
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&  e.KeyChar != '.') {
                 e.Handled = true;
             }
+            // Allow only one period
+            if (e.KeyChar == '.' && ((TextBox)sender).Text.Contains('.'))
+            {
+                e.Handled = true;
+            }
         }
+       
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -212,10 +205,10 @@ namespace WONG_BANKING
             errorProvider1.Clear();
             bool validEmail = true, validAddress = true, validCNumber = true, validAge = true, validName = true, validImage = true, validDeposit = true, validGender = true;
 
-            string email_pattern = @"^[^@\s]+@[a-zA-Z]+\.[a-zA-Z]+$";
+            string email_pattern = @"^(?!.*\.\.)[a-zA-Z0-9.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             string address_pattern = @"^[A-Za-z0-9.,\-\s]+$";
-            string cNumber_pattern = "^[0-9]{11}$";
-            
+            string cNumber_pattern = @"^(09|639|+639)[0-9]{9}$";
+
             if (!Regex.IsMatch(email, email_pattern))
             {
                 errorProvider1.SetError(txtEmail, "must include @ and .");
@@ -226,19 +219,15 @@ namespace WONG_BANKING
                 errorProvider1.SetError(txtName, "must not be empty");
                 validName = false;
             }
-            //if(rbtNone.Checked == true)
-            //{
-            //    errorProvider1.SetError(rbtFemale, "must choose gender");
-            //    validGender = false;
-            //}
+            
             if (!rbtMale.Checked &&  !rbtFemale.Checked)
             {
                 errorProvider1.SetError(rbtFemale, "must choose gender");
                 validGender = false;
             }
-            if ( age < 1)
+            if ( age < 18)
             {
-                errorProvider1.SetError(dtpBdate, "age is lower than 1");
+                errorProvider1.SetError(dtpBdate, "age must not be lower than 18");
                 validAge = false;
             }
             if (!Regex.IsMatch(address, address_pattern))
@@ -248,7 +237,7 @@ namespace WONG_BANKING
             }
             if (!Regex.IsMatch(cNumber, cNumber_pattern))
             {
-                errorProvider1.SetError(txtCNumber, "Invalid contact number. 11 digits only ");
+                errorProvider1.SetError(txtCNumber, "Invalid contact number.");
                 validCNumber = false;
             }
             if(pbProfile.Image == null)
@@ -261,6 +250,7 @@ namespace WONG_BANKING
                 errorProvider1.SetError(btnUpload, "Provide image");
                 validImage = false;
             } 
+            
             if (string.IsNullOrWhiteSpace(initialDeposit))
             {
                 errorProvider1.SetError(txtInitialDeposit, "Your initial deposit should not be less than 500.");
@@ -284,27 +274,42 @@ namespace WONG_BANKING
         }
         public void customerID_Generator()
         {
-            Random rand = new Random();
-            this.customer_id = "CUST" + rand.Next(0,10000).ToString("0000");
+            
+            using (SqlConnection conn = DBHelper.GetConnection())
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Customers", conn);
+                int countCustomers = (int)cmd.ExecuteScalar();
+ 
+                if (countCustomers > 0)
+                {
+                    count = (int)cmd.ExecuteScalar() + 1;
+                }
+            }
+            this.customer_id = "CUST" + count.ToString("0000");
             txtCustomerID.Text = this.customer_id;
+
         }
 
         public void accNumber_Gen()
         {
+            
             using (SqlConnection conn = DBHelper.GetConnection())
             {
                 conn.Open();
+
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Customers", conn);
 
-                if (cmd.ExecuteScalar() != null && cmd.ExecuteScalar() != DBNull.Value)
+                int countCustomers = (int)cmd.ExecuteScalar();
+                
+                if (countCustomers > 0)
                 {
                     count = (int)cmd.ExecuteScalar() + 1;
-                }
-                
+                }                
             }
             this.accNum = birthYear(dtpBdate.Text).ToString() + "-" + currentYear.ToString() + "-" + count.ToString();
-
+            
         }
-
     }
 }

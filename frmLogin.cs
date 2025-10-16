@@ -54,10 +54,10 @@ namespace WONG_BANKING
             {
                 Session.UserLevel = "Admin";
                 MessageBox.Show("Welcome, Admin!");
-                new frmDashboard().Show();
+
+                new frmNewDashboard().Show();
                 this.Hide();
 
-                
             }
             else
             {
@@ -73,7 +73,7 @@ namespace WONG_BANKING
                         conn.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
-                        MessageBox.Show($"Email: {username}\nPassword: {password}");
+                        
                         if (reader.Read()) //check if any record exists
                         {
                             Session.UserLevel = "Customer";
@@ -96,9 +96,9 @@ namespace WONG_BANKING
                             Session.CurrentCustomer = customer;
 
                             MessageBox.Show($"Welcome, {customer.Name.Split(' ')[0]}!");
-
-                            new frmDashboard().Show();
+                            new frmNewDashboard().Show();
                             this.Hide();
+
                         }
                         else
                         {
@@ -111,11 +111,7 @@ namespace WONG_BANKING
                     MessageBox.Show("DB Error found\n"+except.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-           
             
-            
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -127,6 +123,11 @@ namespace WONG_BANKING
         {
             new frmRegistration().Show();
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,75 +17,103 @@ namespace WONG_BANKING
     {
         int q1000, q500, q200, q100, q50, q20, q10, q5, q1, total;
         double depositAmount, newBalance, prevBalance;
-        string customerID;
+        string customerID, accNum;
 
         private void frmDeposit_Load(object sender, EventArgs e)
         {
             if (Session.UserLevel == "Customer")
-            {
-                lblAcc.Visible = false;
-                txtAccNum.Visible = false;
-            }
-        }
+            {   
+                panelAccNum.Visible = false;
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txt1000.Text = txt500.Text = txt200.Text = txt100.Text = txt50.Text = txt20.Text = txt10.Text = txt5.Text = txt1.Text = txtDepositAmount.Text = txtAccNum.Text = "";
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            new frmDashboard().Show();
-            this.Close();
-        }
-
-        private void btnDeposit_Click(object sender, EventArgs e)
-        {
-            depositAmount = string.IsNullOrWhiteSpace(txtDepositAmount.Text) ? 0 : Convert.ToDouble(txtDepositAmount.Text);
-
-            if (Session.UserLevel == "Admin")
-            {
-
-                using (SqlConnection conn = DBHelper.GetConnection())
-                {
-                    conn.Open();
-                    MessageBox.Show("Checkpoint 4: DB connection opened");
-                    string query = "SELECT Balance,CustomerID FROM Customers WHERE AccountNumber=@accNum";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@accNum", txtAccNum.Text);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-
-                        prevBalance = Convert.ToDouble(reader["Balance"]);
-                        customerID = reader["CustomerID"].ToString();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Account Number not found.");
-                    }
-
-                    reader.Close();
-
-                }
-                updateBalance();
-            }
-            else if (Session.UserLevel == "Customer")
-            {
                 Customer cust = Session.CurrentCustomer;
                 if (cust != null)
                 {
                     prevBalance = cust.Balance;
                     customerID = cust.CustomerID;
-
-                    updateBalance();
+                    accNum = cust.AccNum;
                 }
+                
+
             }
-            else
+           
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearItems();
+        }
+
+        private void clearItems()
+        {
+            txt1000.Text = txt500.Text = txt200.Text = txt100.Text = txt50.Text = txt20.Text = txt10.Text = txt5.Text = txt1.Text = "0";
+            txtAccNum.Text = txtDepositAmount.Text= "";
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lblAcc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = DBHelper.GetConnection())
             {
-                MessageBox.Show("User level not detected.");
+                conn.Open();
+               
+                string query = "SELECT Balance,CustomerID,AccountNumber FROM Customers WHERE AccountNumber=@accNum";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@accNum", txtAccNum.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+
+                    prevBalance = Convert.ToDouble(reader["Balance"]);
+                    customerID = reader["CustomerID"].ToString();
+                    accNum = reader["AccountNumber"].ToString();
+
+                    MessageBox.Show($"Account Found!\nCustomer ID: {customerID}\nCurrent Balance: {prevBalance}");
+                }
+                else
+                {
+                    MessageBox.Show("Account Number not found.");
+                }
+
+                reader.Close();
+
             }
+            
+        }
+
+        private void txtDepositAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelAccNum_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            depositAmount = string.IsNullOrWhiteSpace(txtDepositAmount.Text) || !double.TryParse(txtDepositAmount.Text, out double amount) ? 0 : Convert.ToDouble(txtDepositAmount.Text);
+             
+
+            if (string.IsNullOrEmpty(customerID))
+            {
+                MessageBox.Show("Please search for an existing account first.");
+                return;
+            }
+            updateBalance();
 
         }
 
@@ -92,6 +121,7 @@ namespace WONG_BANKING
         {
             InitializeComponent();
         }
+
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -113,19 +143,20 @@ namespace WONG_BANKING
 
         }
 
-        private void Computation_TextChanged(object sender, EventArgs e)
+        private void Computation_ValueChanged(object sender, EventArgs e)
         {
-            TextBox txt = sender as TextBox;
+            NumericUpDown txt = sender as NumericUpDown;
 
-            q1000 = string.IsNullOrWhiteSpace(txt1000.Text) ? 0 : Convert.ToInt32(txt1000.Text) * 1000;
-            q500 = string.IsNullOrWhiteSpace(txt500.Text) ? 0 : Convert.ToInt32(txt500.Text) * 500;
-            q200 = string.IsNullOrWhiteSpace(txt200.Text) ? 0 : Convert.ToInt32(txt200.Text) * 200;
-            q100 = string.IsNullOrWhiteSpace(txt100.Text) ? 0 : Convert.ToInt32(txt100.Text) * 100;
-            q50 = string.IsNullOrWhiteSpace(txt50.Text) ? 0 : Convert.ToInt32(txt50.Text) * 50;
-            q10 = string.IsNullOrWhiteSpace(txt10.Text) ? 0 : Convert.ToInt32(txt10.Text) * 10;
-            q20 = string.IsNullOrWhiteSpace(txt20.Text) ? 0 : Convert.ToInt32(txt20.Text) * 20;
-            q5 = string.IsNullOrWhiteSpace(txt5.Text) ? 0 : Convert.ToInt32(txt5.Text) * 5;
-            q1 = string.IsNullOrWhiteSpace(txt1.Text) ? 0 : Convert.ToInt32(txt1.Text) * 1;
+
+            q1000 = Convert.ToInt32(txt1000.Value) * 1000;
+            q500 = Convert.ToInt32(txt500.Value) * 500;
+            q200 = Convert.ToInt32(txt200.Value) * 200;
+            q100 = Convert.ToInt32(txt100.Value) * 100;
+            q50 = Convert.ToInt32(txt50.Value) * 50;
+            q10 = Convert.ToInt32(txt10.Value) * 10;
+            q20 = Convert.ToInt32(txt20.Value) * 20;
+            q5 = Convert.ToInt32(txt5.Value) * 5;
+            q1 = Convert.ToInt32(txt1.Value) * 1;
 
             if (txt == txt1000) lbl1000.Text = q1000.ToString();
             else if (txt == txt500) lbl500.Text = q500.ToString();
@@ -140,6 +171,7 @@ namespace WONG_BANKING
             total = q1000 + q500 + q200 + q100 + q50 + q20 + q10 + q5 + q1;
 
             lblTotal.Text = total.ToString();
+
         }
         private void txtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -166,13 +198,18 @@ namespace WONG_BANKING
             {
                 e.Handled = true;
             }
+            // Allow only one period
+            if (e.KeyChar == '.' && ((TextBox)sender).Text.Contains('.'))
+            {
+                e.Handled = true;
+            }
         }
 
 
         private void updateBalance()
         {
             newBalance = prevBalance + depositAmount;
-            if (total == Math.Truncate(depositAmount) && depositAmount > 1 && prevBalance > 1)
+            if (total == Math.Truncate(depositAmount) && depositAmount > 0)
             {
                 using (SqlConnection conn = DBHelper.GetConnection())
                 {
@@ -184,20 +221,21 @@ namespace WONG_BANKING
                     updateCmd.Parameters.AddWithValue("@CustomerID", customerID);
                     updateCmd.ExecuteNonQuery();
 
-                    string insertQuery = "INSERT INTO Transactions(CustomerID, TransactionType, Amount, PreviousBalance, NewBalance, TransactionDate) VALUES (@CustomerID, 'Deposit', @Amount, @PreviousBalance, @NewBalance, GETDATE())";
+                    string insertQuery = "INSERT INTO Transactions(AccountNumber, TransactionType, Amount, PreviousBalance, NewBalance, TransactionDate) VALUES (@AccNum, 'Deposit', @Amount, @PreviousBalance, @NewBalance, GETDATE())";
                     SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-                    insertCmd.Parameters.AddWithValue("@CustomerID", customerID);
+                    insertCmd.Parameters.AddWithValue("@AccNum", accNum);
                     insertCmd.Parameters.AddWithValue("@Amount", depositAmount);
                     insertCmd.Parameters.AddWithValue("@PreviousBalance", prevBalance);
                     insertCmd.Parameters.AddWithValue("@NewBalance", newBalance);
                     insertCmd.ExecuteNonQuery();
 
                 }
-                MessageBox.Show($"Deposit Successful\ncustomerId:{customerID}, Amount:{depositAmount}, Prevbalance: {prevBalance}, NewBalance: {newBalance}");
+                MessageBox.Show($"Deposit Successful\nPrevbalance: {prevBalance}\nNewBalance: {newBalance}");
+                clearItems();
             }
             else
             {
-                MessageBox.Show("Deposit Unsuccessful.\nThe amount to be deposited and total amount based on denominations should be equal and should have value");
+                MessageBox.Show($"Deposit Unsuccessful.\nThe amount to be deposited and total amount based on denominations should be equal and should be valid.\nDep amt : {depositAmount}, total: {total}, prev balance : {prevBalance}");
             }
         }
 

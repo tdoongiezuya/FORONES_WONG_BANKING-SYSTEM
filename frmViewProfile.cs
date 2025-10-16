@@ -32,12 +32,12 @@ namespace WONG_BANKING
 
             if (Session.UserLevel == "Customer")
             {
-                this.Size = new Size(849, 409);
+                this.Size = new Size(873, 510);
                 customersDataGridView.Visible = false;
 
                 Customer cust = Session.CurrentCustomer;
                 lblCId.Text = cust.CustomerID;
-                lblAccNum.Text = cust.AccNum;
+                
                 lblName.Text = cust.Name;
                 lblGender.Text = cust.Gender;
                 lblAge.Text = (cust.Age).ToString();
@@ -50,7 +50,7 @@ namespace WONG_BANKING
 
             } else if (Session.UserLevel == "Admin")
             {
-                this.Size = new Size(849, 672);
+                this.Size = new Size(873, 787);
             }
         }
 
@@ -61,16 +61,16 @@ namespace WONG_BANKING
                 DataGridViewRow row = customersDataGridView.Rows[e.RowIndex];
 
                 lblCId.Text = row.Cells[0].Value.ToString();
-                lblAccNum.Text = row.Cells[1].Value.ToString();
-                lblName.Text = row.Cells[2].Value.ToString();
-                lblGender.Text = row.Cells[3].Value.ToString();
-                lblAge.Text = row.Cells[4].Value.ToString();
-                lblBdate.Text = row.Cells[5].Value.ToString();
-                lblCStatus.Text = row.Cells[6].Value.ToString();
-                lblAddress.Text = row.Cells[7].Value.ToString();
-                lblCnumber.Text = row.Cells[8].Value.ToString();
-                lblEmail.Text = row.Cells[9].Value.ToString();
-                pbProfile.Image = Image.FromFile(row.Cells[10].Value.ToString());
+                //lblAccNum.Text = row.Cells[1].Value.ToString();
+                lblName.Text = row.Cells[1].Value.ToString();
+                lblGender.Text = row.Cells[2].Value.ToString();
+                lblAge.Text = row.Cells[3].Value.ToString();
+                lblBdate.Text = row.Cells[4].Value.ToString();
+                lblCStatus.Text = row.Cells[5].Value.ToString();
+                lblAddress.Text = row.Cells[6].Value.ToString();
+                lblCnumber.Text = row.Cells[7].Value.ToString();
+                lblEmail.Text = row.Cells[8].Value.ToString();
+                pbProfile.Image = Image.FromFile(row.Cells[9].Value.ToString());
             }
         }
 
@@ -86,8 +86,7 @@ namespace WONG_BANKING
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            new frmDashboard().Show();
-            this.Close();
+          this.Close();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -116,6 +115,11 @@ namespace WONG_BANKING
         }
 
         private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

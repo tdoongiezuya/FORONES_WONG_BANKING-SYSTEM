@@ -172,6 +172,7 @@
             this.txtInitialDeposit.Name = "txtInitialDeposit";
             this.txtInitialDeposit.Size = new System.Drawing.Size(297, 27);
             this.txtInitialDeposit.TabIndex = 59;
+            this.txtInitialDeposit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInitialDeposit_KeyPress);
             // 
             // label16
             // 
@@ -251,7 +252,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClear.Location = new System.Drawing.Point(190, 608);
+            this.btnClear.Location = new System.Drawing.Point(345, 608);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(142, 38);
@@ -268,7 +269,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.Location = new System.Drawing.Point(345, 608);
+            this.btnSave.Location = new System.Drawing.Point(190, 608);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(141, 38);
@@ -349,6 +350,7 @@
             this.txtCNumber.Name = "txtCNumber";
             this.txtCNumber.Size = new System.Drawing.Size(297, 27);
             this.txtCNumber.TabIndex = 45;
+            this.txtCNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNumber_KeyPress);
             // 
             // txtAddress
             // 
@@ -590,12 +592,13 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRegistration";
+            this.Text = "REGISTRATION";
             this.Load += new System.EventHandler(this.frmRegistration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace WONG_BANKING
 {
     public partial class TransactionHistory : Form
     {
+        string accountNumber;
         public TransactionHistory()
         {
             InitializeComponent();
@@ -30,6 +32,27 @@ namespace WONG_BANKING
             // TODO: This line of code loads data into the 'bankDBDataSet.Transactions' table. You can move, or remove it, as needed.
             this.transactionsTableAdapter.Fill(this.bankDBDataSet.Transactions);
 
+            Customer cust = Session.CurrentCustomer;
+            accountNumber = cust.AccNum;
+            try
+            {
+                using (SqlConnection conn = DBHelper.GetConnection())
+                {
+                    string query = "SELECT * FROM Transactions WHERE AccountNumber = @AccNum";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@AccNum", accountNumber);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    transactionsDataGridView.DataSource = dt;
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("database error");
+            }
+            
         }
 
         private void transactionsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -48,13 +71,19 @@ namespace WONG_BANKING
             {
                 DataGridViewRow row = transactionsDataGridView.Rows[e.RowIndex];
 
-                lblTransType.Text = row.Cells[0].Value.ToString();
-                lblAmount.Text = row.Cells[1].Value.ToString();
-                lblPrevBalance.Text = row.Cells[2].Value.ToString();
-                lblNewBalance.Text = row.Cells[3].Value.ToString();
-                lblTransDate.Text = row.Cells[4].Value.ToString();
+                lblTransDate.Text = row.Cells[0].Value.ToString();
+                lblTransType.Text = row.Cells[1].Value.ToString();
+                lblAmount.Text = row.Cells[2].Value.ToString();
+                lblPrevBalance.Text = row.Cells[3].Value.ToString();
+                lblNewBalance.Text = row.Cells[4].Value.ToString();
+                
                 
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
